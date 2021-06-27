@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <title>Product rating app</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'productapp/css/bootstrap.css' %}">
+  
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark ">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Logo</a>
+  
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto mr-2 ">
+      {% if request.session.email %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'signup'%}">Signup</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+    </ul>
+      {% endif%}
+  </nav>
+    <div class='container mt-5'>
+   
+        {% block content%}
+         
+        {% endblock content%}
+
+    </div>
+    <script src="{% static 'productapp/js/bootstrap.js' %}"> </script>
+    <script src="{% static 'productapp/js/jquery.js' %}"> </script>
+    <script src="{% static 'productapp/js/popper.js' %}"> </script>
+</body>
+</html>
